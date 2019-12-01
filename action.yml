@@ -1,0 +1,9 @@
+name: 'aws-assumer-role'
+description: 'GitHub Action that assumes AWS role.'
+author: tdi
+branding:
+  icon: 'shuffle'
+  color: 'black'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
