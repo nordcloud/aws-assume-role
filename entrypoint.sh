@@ -12,8 +12,6 @@ if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
   exit 1
 fi
 
-echo ${AWS_ACCESS_KEY_ID}
-
 eval $(./assume-role-arn $*)
 
 echo "::set-env name=AWS_ACCESS_KEY_ID::${AWS_ACCESS_KEY_ID}"
