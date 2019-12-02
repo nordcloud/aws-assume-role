@@ -1,6 +1,6 @@
 # AWS Assume role action
 
-Let's you assume a role and sets the credentials accordingly. 
+It lets you assume a role and sets the credentials accordingly. 
 
 ## Usage
 
