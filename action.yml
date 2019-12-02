@@ -1,4 +1,4 @@
-name: 'aws-assumer-role'
+name: 'aws-assume-role'
 description: 'GitHub Action that assumes AWS role.'
 author: tdi
 branding:
