@@ -7,4 +7,5 @@ RUN wget https://github.com/nordcloud/assume-role-arn/releases/download/v${VERSI
     chmod a+x /assume-role-arn
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+WORKDIR /
 ENTRYPOINT ["/entrypoint.sh"]

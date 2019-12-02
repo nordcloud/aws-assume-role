@@ -11,9 +11,9 @@ if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
   echo "AWS_SECRET_ACCESS_KEY is not set. Quitting."
   exit 1
 fi
-ldd ./assume-role-arn
-stat ./assume-role-arn
-file ./assume-role-arn
+ldd /assume-role-arn
+stat /assume-role-arn
+file /assume-role-arn
 
 eval $(./assume-role-arn $*)
 
