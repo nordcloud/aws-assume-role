@@ -14,6 +14,9 @@ if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
   exit 1
 fi
 
+
+mkdir -p "${HOME}/.cache"
+
 eval $(/assume-role-arn $*)
 
 echo "::set-env name=AWS_ACCESS_KEY_ID::${AWS_ACCESS_KEY_ID}"
