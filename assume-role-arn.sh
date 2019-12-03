@@ -32,8 +32,10 @@ fi
 ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN $*"
 set -- "$ASSUME_ROLE_ARN"
 
-eval "$ASSUME_ROLE_ARN"
+eval "$($ASSUME_ROLE_ARN)"
 
-echo "::set-env name=AWS_ACCESS_KEY_ID::${AWS_ACCESS_KEY_ID}"
-echo "::set-env name=AWS_SECRET_ACCESS_KEY::${AWS_SECRET_ACCESS_KEY}"
-echo "::set-env name=AWS_SESSION_TOKEN::${AWS_SESSION_TOKEN}"
+if [ -n "$AWS_ACCESS_KEY_ID" ]; then
+    echo "::set-env name=AWS_ACCESS_KEY_ID::${AWS_ACCESS_KEY_ID}"
+    echo "::set-env name=AWS_SECRET_ACCESS_KEY::${AWS_SECRET_ACCESS_KEY}"
+    echo "::set-env name=AWS_SESSION_TOKEN::${AWS_SESSION_TOKEN}"
+fi
