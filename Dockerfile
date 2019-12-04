@@ -2,7 +2,7 @@ ARG alpine_version="${alpine_version:-latest}"
 
 FROM alpine:${alpine_version} AS builder
 
-ARG version="${version:-latest}"
+ARG version="${version:-0.3.3}"
 
 RUN set -eux && \
     mkdir -p /build
@@ -15,6 +15,7 @@ RUN set -eux && \
     apk --no-cache --update add ca-certificates && \
     apk --no-cache --update add curl && \
     apk --no-cache --update add jq && \
+    echo "Using assume-role-arn version: $version" && \
     if [ "x${version}" = 'xlatest' ]; then \
         curl -s 'https://api.github.com/repos/nordcloud/assume-role-arn/releases/latest' | \
             jq -r '.assets[] | select(.name | contains("linux")) | .browser_download_url' | \
@@ -25,7 +26,7 @@ RUN set -eux && \
 
 FROM alpine:${alpine_version}
 
-ARG version="${version:-latest}"
+ARG version="${version:-0.3.3}"
 
 LABEL \
     org.label-schema.schema-version="1.0" \
