@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-if [ "x$DEBUG" = 'xtrue' ]; then
+if [ "x${DEBUG}" = 'xtrue' ]; then
     set -x
 fi
 

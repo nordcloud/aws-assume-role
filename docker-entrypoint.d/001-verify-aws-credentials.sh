@@ -1,11 +1,11 @@
 #!/bin/sh
 
 set -e
-if [ "x$DEBUG" = 'xtrue' ]; then
+if [ "x${DEBUG}" = 'xtrue' ]; then
     set -x
 fi
 
-if [ "x$CHECK_ENVIRONMENT" = 'xfalse' ]; then
+if [ "x${CHECK_ENVIRONMENT}" = 'xfalse' ]; then
     echo 'Environment variables check has been disabled.'
     exit 0
 fi
