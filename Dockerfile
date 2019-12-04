@@ -2,7 +2,7 @@ ARG alpine_version="${alpine_version:-latest}"
 
 FROM alpine:${alpine_version} AS builder
 
-ARG version="${version:-0.3.3}"
+ARG version="${version:-0.3.4}"
 
 RUN set -eux && \
     mkdir -p /build
@@ -26,7 +26,7 @@ RUN set -eux && \
 
 FROM alpine:${alpine_version}
 
-ARG version="${version:-0.3.3}"
+ARG version="${version:-0.3.4}"
 
 LABEL \
     org.label-schema.schema-version="1.0" \
