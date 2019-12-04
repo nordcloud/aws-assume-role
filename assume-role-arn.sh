@@ -25,6 +25,10 @@ if [ "x$EXTERNAL_ID" != 'x' ]; then
     ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -e $EXTERNAL_ID"
 fi
 
+if [ "x$SKIP_CACHE" = 'xtrue' ]; then
+    ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -skipCache"
+fi
+
 if [ "x$VERBOSE" = 'xtrue' ]; then
     ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -v"
 fi
