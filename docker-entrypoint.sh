@@ -27,7 +27,7 @@ if [ -d $DIRECTORY ] && [ -n "$(ls -A $DIRECTORY)" ]; then
     done
 fi
 
-if [ ! -d "${HOME}/.cache" ]; then
+if [ "x${SKIP_CACHE}" = 'xfalse' ] && [ ! -d "${HOME}/.cache" ]; then
     mkdir -p "${HOME}/.cache"
     chmod u+rwx,g=,o= "${HOME}/.cache"
 fi
