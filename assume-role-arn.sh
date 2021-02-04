@@ -21,10 +21,6 @@ if [ "x${ROLE_SESSION_NAME}" != 'x' ]; then
     ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -n $ROLE_SESSION_NAME"
 fi
 
-if [ "x${ENV_PREFIX}" != 'x' ]; then
-    ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -envprefix $ENV_PREFIX"
-fi
-
 if [ "x${EXTERNAL_ID}" != 'x' ]; then
     ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -e $EXTERNAL_ID"
 fi
