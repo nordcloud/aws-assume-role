@@ -21,6 +21,10 @@ if [ "x${ROLE_SESSION_NAME}" != 'x' ]; then
     ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -n $ROLE_SESSION_NAME"
 fi
 
+if [ "x${ENV_PREFIX}" != 'x' ]; then
+    ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -envprefix $ENV_PREFIX"
+fi
+
 if [ "x${EXTERNAL_ID}" != 'x' ]; then
     ASSUME_ROLE_ARN="$ASSUME_ROLE_ARN -e $EXTERNAL_ID"
 fi
@@ -39,10 +43,10 @@ set -- "$ASSUME_ROLE_ARN"
 eval "$($ASSUME_ROLE_ARN)"
 
 if [ -n "$AWS_ACCESS_KEY_ID" ]; then
-    echo "::set-env name=AWS_ACCESS_KEY_ID::${AWS_ACCESS_KEY_ID}"
-    echo "::set-env name=AWS_SECRET_ACCESS_KEY::${AWS_SECRET_ACCESS_KEY}"
-    echo "::set-env name=AWS_SESSION_TOKEN::${AWS_SESSION_TOKEN}"
-    echo "::add-mask::${AWS_ACCESS_KEY_ID}"
-    echo "::add-mask::${AWS_SECRET_ACCESS_KEY}"
-    echo "::add-mask::${AWS_SESSION_TOKEN}"
+    echo "::set-env name=${ENV_PREFIX}AWS_ACCESS_KEY_ID::${AWS_ACCESS_KEY_ID}"
+    echo "::set-env name=${ENV_PREFIX}AWS_SECRET_ACCESS_KEY::${AWS_SECRET_ACCESS_KEY}"
+    echo "::set-env name=${ENV_PREFIX}AWS_SESSION_TOKEN::${AWS_SESSION_TOKEN}"
+    echo "::add-mask::${ENV_PREFIX}${AWS_ACCESS_KEY_ID}"
+    echo "::add-mask::${ENV_PREFIX}${AWS_SECRET_ACCESS_KEY}"
+    echo "::add-mask::${ENV_PREFIX}${AWS_SESSION_TOKEN}"
 fi
