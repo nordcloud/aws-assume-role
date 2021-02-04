@@ -2,7 +2,7 @@ ARG alpine_version="${alpine_version:-latest}"
 
 FROM alpine:${alpine_version} AS builder
 
-ARG version="${version:-0.3.4}"
+ARG version="${version:-0.3.9}"
 
 RUN set -eux && \
     mkdir -p /build
