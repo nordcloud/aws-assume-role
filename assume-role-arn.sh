@@ -39,9 +39,9 @@ set -- "$ASSUME_ROLE_ARN"
 eval "$($ASSUME_ROLE_ARN)"
 
 if [ -n "$AWS_ACCESS_KEY_ID" ]; then
-    echo "::set-env name=${ENV_PREFIX}AWS_ACCESS_KEY_ID::${AWS_ACCESS_KEY_ID}"
-    echo "::set-env name=${ENV_PREFIX}AWS_SECRET_ACCESS_KEY::${AWS_SECRET_ACCESS_KEY}"
-    echo "::set-env name=${ENV_PREFIX}AWS_SESSION_TOKEN::${AWS_SESSION_TOKEN}"
+    echo "${ENV_PREFIX}AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" >> $GITHUB_ENV
+    echo "${ENV_PREFIX}AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> $GITHUB_ENV
+    echo "${ENV_PREFIX}AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}" >> $GITHUB_ENV
     echo "::add-mask::${ENV_PREFIX}${AWS_ACCESS_KEY_ID}"
     echo "::add-mask::${ENV_PREFIX}${AWS_SECRET_ACCESS_KEY}"
     echo "::add-mask::${ENV_PREFIX}${AWS_SESSION_TOKEN}"
